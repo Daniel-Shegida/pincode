@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_display.dart';
 import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
@@ -44,49 +45,58 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       child: Scaffold(
         backgroundColor: ProjectColors.backGroundColor,
         appBar: const BasicTransparentAppBar(),
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.w,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Spacer(flex: 1,),
-                SizedBox(
-                  height: 50.h,
+        body: LayoutBuilder(
+          builder: (context, constraint) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 15.w,
+              ),
+              child: SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraint.maxHeight),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 25.h,
+                        ),
+                        const _PinCodeTitle(),
+                        SizedBox(
+                          height: 19.h,
+                        ),
+                        const _PinCodeSubTitle(
+                          phoneNumber: _phoneNumber,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        PinCodeDisplay(
+                          numbers: _pinCodeSmsList,
+                          amount: 4,
+                        ),
+                        SizedBox(
+                          height: 110.h,
+                        ),
+                        const Spacer(),
+                        _PinCodeRepeatButton(
+                          onPressed: () {},
+                        ),
+                        SizedBox(
+                          height: 59.h,
+                        ),
+                        PinCodeKeyboard(
+                          onNumberPressed: onNumberPressed,
+                          onDeletePressed: onDeletePressed,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                const _PinCodeTitle(),
-                SizedBox(
-                  height: 19.h,
-                ),
-                const _PinCodeSubTitle(
-                  phoneNumber: _phoneNumber,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                PincodeRow(
-                  numbers: _pinCodeSmsList,
-                ),
-                SizedBox(
-                  height: 123.h,
-                ),
-                _PinCodeRepeatButton(
-                  onPressed: () {},
-                ),
-                // Spacer(flex: 1,),
-                SizedBox(
-                  height: 59.h,
-                ),
-                PinCodeKeyboard(
-                  onNumberPressed: onNumberPressed,
-                  onDeletePressed: onDeletePressed,
-                )
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -116,59 +126,6 @@ class _PinCodeSubTitle extends StatelessWidget {
       ProjectStrings.pincodeHint(phoneNumber),
       style: ProjectStyles.regularPurple12Lato,
       textAlign: TextAlign.center,
-    );
-  }
-}
-
-class PincodeRow extends StatelessWidget {
-  const PincodeRow({required this.numbers, Key? key}) : super(key: key);
-  final List<int> numbers;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        for (int i in numbers)
-          _pincodeSegment(
-            number: i.toString(),
-          ),
-        for (int i = numbers.length; i < 4; i++)
-          const _pincodeSegment(
-            number: '',
-          ),
-      ],
-    );
-  }
-}
-
-class _pincodeSegment extends StatelessWidget {
-  const _pincodeSegment({required this.number, Key? key}) : super(key: key);
-  final String number;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 66,
-      width: 66,
-      alignment: Alignment.center,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: ProjectColors.shadow,
-            spreadRadius: 2,
-            blurRadius: 10,
-          ),
-        ],
-      ),
-      child: Text(
-        number,
-        style: ProjectStyles.boldPurple32Lato,
-      ),
     );
   }
 }
