@@ -6,7 +6,8 @@ import 'package:untitled/presentation/res/strings/project_strings.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
 import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
 
-const phoneNumber = '+7 (960) 147-67-47';
+/// моковое значение номера, которое должно приходить на экран
+const _phoneNumber = '+7 (960) 147-67-47';
 
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class PinCodeScreen extends StatefulWidget {
 }
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
-  List<int> _pincodeSmsList = [];
+  final List<int> _pincodeSmsList = [];
 
   void onNumberPressed(int number) {
     if (_pincodeSmsList.length < 4) {
@@ -60,14 +61,14 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      ProjectStrings.pincodeTitle,
+                      ProjectStrings.pinCodeTitle,
                       style: ProjectStyles.boldBlack32Lato,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      ProjectStrings.pincodeHint(phoneNumber),
+                      ProjectStrings.pincodeHint(_phoneNumber),
                       style: ProjectStyles.regularPurple12Lato,
                       textAlign: TextAlign.center,
                     ),
@@ -89,7 +90,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     borderRadius: BorderRadius.circular(20),
                     gradient: ProjectColors.gradient,
                     child: Text(
-                      ProjectStrings.pincodeButton,
+                      ProjectStrings.pinCodeButton,
                       style: ProjectStyles.boldWhite16Lato,
                     ),
                   ),
