@@ -4,6 +4,7 @@ import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/icons/project_icons.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
+import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
 
 const phoneNumber = '+7 (960) 147-67-47';
 
@@ -40,25 +41,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ProjectColors.backGroundColor,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: Center(
-            child: RawMaterialButton(
-              fillColor: Colors.transparent,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              elevation: 0,
-              shape: const CircleBorder(),
-              child: SvgPicture.asset(
-                ProjectIcons.iShevronLeft,
-                width: 7,
-                height: 14,
-              ),
-            ),
-          ),
-        ),
+        appBar: BasicTransparentAppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 15,
