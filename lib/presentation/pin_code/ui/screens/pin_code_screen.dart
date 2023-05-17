@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
-import 'package:untitled/presentation/res/icons/project_icons.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
 import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
@@ -18,23 +17,23 @@ class PinCodeScreen extends StatefulWidget {
 }
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
-  final List<int> _pincodeSmsList = [];
+  final List<int> _pinCodeSmsList = [];
 
   void onNumberPressed(int number) {
-    if (_pincodeSmsList.length < 4) {
-      _pincodeSmsList.add(number);
+    if (_pinCodeSmsList.length < 4) {
+      _pinCodeSmsList.add(number);
     }
     setState(() {
-      _pincodeSmsList;
+      _pinCodeSmsList;
     });
   }
 
   void onDeletePressed() {
-    if (_pincodeSmsList.isNotEmpty) {
-      _pincodeSmsList.removeLast();
+    if (_pinCodeSmsList.isNotEmpty) {
+      _pinCodeSmsList.removeLast();
     }
     setState(() {
-      _pincodeSmsList;
+      _pinCodeSmsList;
     });
   }
 
@@ -73,7 +72,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                   height: 20.h,
                 ),
                 PincodeRow(
-                  numbers: _pincodeSmsList,
+                  numbers: _pinCodeSmsList,
                 ),
                 SizedBox(
                   height: 123.h,
@@ -93,7 +92,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 SizedBox(
                   height: 59.h,
                 ),
-                PincodeKeyboard(
+                PinCodeKeyboard(
                   onNumberPressed: onNumberPressed,
                   onDeletePressed: onDeletePressed,
                 )
@@ -199,134 +198,6 @@ class MyElevatedButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: borderRadius),
         ),
         child: child,
-      ),
-    );
-  }
-}
-
-class PincodeKeyboard extends StatelessWidget {
-  const PincodeKeyboard({
-    required this.onNumberPressed,
-    required this.onDeletePressed,
-    Key? key,
-  }) : super(key: key);
-  final void Function(int) onNumberPressed;
-  final VoidCallback onDeletePressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _PinCodeKey(
-              pincodeNumber: 1,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 2,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 3,
-              onPressed: onNumberPressed,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _PinCodeKey(
-              pincodeNumber: 4,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 5,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 6,
-              onPressed: onNumberPressed,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _PinCodeKey(
-              pincodeNumber: 7,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 8,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 9,
-              onPressed: onNumberPressed,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(
-              width: 65,
-              height: 65,
-            ),
-            _PinCodeKey(
-              pincodeNumber: 0,
-              onPressed: onNumberPressed,
-            ),
-            _PinCodeDelete(
-              onPressed: onDeletePressed,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _PinCodeKey extends StatelessWidget {
-  const _PinCodeKey(
-      {required this.pincodeNumber, required this.onPressed, Key? key})
-      : super(key: key);
-  final int pincodeNumber;
-  final void Function(int key) onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        onPressed(pincodeNumber);
-      },
-      child: Padding(
-        padding: EdgeInsets.all(10.h),
-        child: Text(
-          pincodeNumber.toString(),
-          style: ProjectStyles.mediumBlack32Lato,
-        ),
-      ),
-    );
-  }
-}
-
-class _PinCodeDelete extends StatelessWidget {
-  const _PinCodeDelete({required this.onPressed, Key? key}) : super(key: key);
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Padding(
-        padding: EdgeInsets.all(10.h),
-        child: SvgPicture.asset(
-          ProjectIcons.iDelete,
-          color: ProjectColors.purple,
-        ),
       ),
     );
   }
