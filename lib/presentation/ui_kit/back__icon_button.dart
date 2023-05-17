@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/presentation/res/icons/project_icons.dart';
 
@@ -13,8 +14,8 @@ class BackIconButton extends StatelessWidget {
       onPressed: onPressed,
       icon: SvgPicture.asset(
         ProjectIcons.iShevronLeft,
-        width: 7,
-        height: 14,
+        width: 7.w,
+        height: 14.h,
       ),
     );
   }

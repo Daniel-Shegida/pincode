@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/icons/project_icons.dart';
@@ -44,66 +45,59 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         backgroundColor: ProjectColors.backGroundColor,
         appBar: BasicTransparentAppBar(),
         body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
+          padding: EdgeInsets.symmetric(
+            horizontal: 15.w,
           ),
           child: SingleChildScrollView(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Spacer(flex: 1,),
-                  SizedBox(
-                    height: 16,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Spacer(flex: 1,),
+                SizedBox(
+                  height: 50.h,
+                ),
+                Text(
+                  ProjectStrings.pinCodeTitle,
+                  style: ProjectStyles.boldBlack32Lato,
+                ),
+                SizedBox(
+                  height: 19.h,
+                ),
+                Text(
+                  ProjectStrings.pincodeHint(_phoneNumber),
+                  style: ProjectStyles.regularPurple12Lato,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                PincodeRow(
+                  numbers: _pincodeSmsList,
+                ),
+                SizedBox(
+                  height: 123.h,
+                ),
+                MyElevatedButton(
+                  width: double.infinity,
+                  height: 51.h,
+                  onPressed: () {},
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: ProjectColors.gradient,
+                  child: Text(
+                    ProjectStrings.pinCodeButton,
+                    style: ProjectStyles.boldWhite16Lato,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      ProjectStrings.pinCodeTitle,
-                      style: ProjectStyles.boldBlack32Lato,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(
-                      ProjectStrings.pincodeHint(_phoneNumber),
-                      style: ProjectStyles.regularPurple12Lato,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: PincodeRow(
-                      numbers: _pincodeSmsList,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  // Spacer(flex: 4,),
-                  MyElevatedButton(
-                    width: double.infinity,
-                    height: 51,
-                    onPressed: () {},
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: ProjectColors.gradient,
-                    child: Text(
-                      ProjectStrings.pinCodeButton,
-                      style: ProjectStyles.boldWhite16Lato,
-                    ),
-                  ),
-                  // Spacer(flex: 1,),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  PincodeKeyboard(
-                    onNumberPressed: onNumberPressed,
-                    onDeletePressed: onDeletePressed,
-                  )
-                ],
-              ),
+                ),
+                // Spacer(flex: 1,),
+                SizedBox(
+                  height: 59.h,
+                ),
+                PincodeKeyboard(
+                  onNumberPressed: onNumberPressed,
+                  onDeletePressed: onDeletePressed,
+                )
+              ],
             ),
           ),
         ),
@@ -309,7 +303,7 @@ class _PinCodeKey extends StatelessWidget {
         onPressed(pincodeNumber);
       },
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.h),
         child: Text(
           pincodeNumber.toString(),
           style: ProjectStyles.mediumBlack32Lato,
@@ -328,7 +322,7 @@ class _PinCodeDelete extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.h),
         child: SvgPicture.asset(
           ProjectIcons.iDelete,
           color: ProjectColors.purple,

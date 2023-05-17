@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/presentation/main/ui/screens/main_screen.dart';
 
 /// иницилизация  проекта
@@ -7,11 +8,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      useInheritedMediaQuery: true,
+      builder: (_, __) {
+        return MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(),
+        );
+      },
     );
   }
 }
