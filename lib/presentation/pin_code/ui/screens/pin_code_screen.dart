@@ -8,7 +8,7 @@ import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
 import 'package:untitled/presentation/ui_kit/gradient_rounded_elevated_button.dart';
 
 /// моковое значение номера, которое должно приходить на экран
-const _phoneNumber = '+7 (960) 147-67-47';
+const String _phoneNumber = '+7 (960) 147-67-47';
 
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ProjectColors.backGroundColor,
-        appBar: BasicTransparentAppBar(),
+        appBar: const BasicTransparentAppBar(),
         body: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 15.w,
@@ -57,17 +57,12 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 SizedBox(
                   height: 50.h,
                 ),
-                Text(
-                  ProjectStrings.pinCodeTitle,
-                  style: ProjectStyles.boldBlack32Lato,
-                ),
+                const _PinCodeTitle(),
                 SizedBox(
                   height: 19.h,
                 ),
-                Text(
-                  ProjectStrings.pincodeHint(_phoneNumber),
-                  style: ProjectStyles.regularPurple12Lato,
-                  textAlign: TextAlign.center,
+                const _PinCodeSubTitle(
+                  phoneNumber: _phoneNumber,
                 ),
                 SizedBox(
                   height: 20.h,
@@ -94,6 +89,33 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _PinCodeTitle extends StatelessWidget {
+  const _PinCodeTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      ProjectStrings.pinCodeTitle,
+      style: ProjectStyles.boldBlack32Lato,
+    );
+  }
+}
+
+class _PinCodeSubTitle extends StatelessWidget {
+  const _PinCodeSubTitle({required this.phoneNumber, Key? key})
+      : super(key: key);
+  final String phoneNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      ProjectStrings.pincodeHint(phoneNumber),
+      style: ProjectStyles.regularPurple12Lato,
+      textAlign: TextAlign.center,
     );
   }
 }
