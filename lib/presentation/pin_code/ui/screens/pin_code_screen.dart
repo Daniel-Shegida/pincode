@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled/res/colors/project_colors.dart';
-import 'package:untitled/res/icons/project_icons.dart';
-import 'package:untitled/res/strings/project_strings.dart';
-import 'package:untitled/res/styles/project_styles.dart';
+import 'package:untitled/presentation/res/colors/project_colors.dart';
+import 'package:untitled/presentation/res/icons/project_icons.dart';
+import 'package:untitled/presentation/res/strings/project_strings.dart';
+import 'package:untitled/presentation/res/styles/project_styles.dart';
 
 const phoneNumber = '+7 (960) 147-67-47';
 
@@ -67,12 +67,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.9,
               child: Column(
-
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Spacer(flex: 1,),
-                  SizedBox(height: 16,),
+                  SizedBox(
+                    height: 16,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
@@ -94,7 +95,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       numbers: _pincodeSmsList,
                     ),
                   ),
-                  SizedBox(height: 16,),
+                  SizedBox(
+                    height: 16,
+                  ),
                   // Spacer(flex: 4,),
                   MyElevatedButton(
                     width: double.infinity,
@@ -108,7 +111,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     ),
                   ),
                   // Spacer(flex: 1,),
-                  SizedBox(height: 16,),
+                  SizedBox(
+                    height: 16,
+                  ),
                   PincodeKeyboard(
                     onNumberPressed: onNumberPressed,
                     onDeletePressed: onDeletePressed,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/res/colors/project_colors.dart';
+import 'package:untitled/presentation/res/colors/project_colors.dart';
 
 /// стили проекта
 abstract class ProjectStyles {
