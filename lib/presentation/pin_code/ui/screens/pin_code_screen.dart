@@ -5,6 +5,7 @@ import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
 import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
+import 'package:untitled/presentation/ui_kit/gradient_rounded_elevated_button.dart';
 
 /// моковое значение номера, которое должно приходить на экран
 const _phoneNumber = '+7 (960) 147-67-47';
@@ -77,16 +78,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 SizedBox(
                   height: 123.h,
                 ),
-                MyElevatedButton(
-                  width: double.infinity,
-                  height: 51.h,
+                _PinCodeRepeatButton(
                   onPressed: () {},
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: ProjectColors.gradient,
-                  child: Text(
-                    ProjectStrings.pinCodeButton,
-                    style: ProjectStyles.boldWhite16Lato,
-                  ),
                 ),
                 // Spacer(flex: 1,),
                 SizedBox(
@@ -158,46 +151,25 @@ class _pincodeSegment extends StatelessWidget {
   }
 }
 
-class MyElevatedButton extends StatelessWidget {
-  final BorderRadiusGeometry? borderRadius;
-  final double? width;
-  final double height;
-  final Gradient gradient;
+class _PinCodeRepeatButton extends StatelessWidget {
   final VoidCallback? onPressed;
-  final Widget child;
 
-  const MyElevatedButton({
+  const _PinCodeRepeatButton({
     Key? key,
     required this.onPressed,
-    required this.child,
-    this.borderRadius,
-    this.width,
-    this.height = 44.0,
-    this.gradient = const LinearGradient(colors: [Colors.cyan, Colors.indigo]),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = this.borderRadius ?? BorderRadius.circular(0);
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        gradient: gradient,
-        borderRadius: borderRadius,
-      ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          surfaceTintColor: Colors.transparent,
-          disabledBackgroundColor: Colors.transparent,
-          foregroundColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: borderRadius),
-        ),
-        child: child,
+    return GradientRoundedElevatedButton(
+      width: double.infinity,
+      height: 51.h,
+      onPressed: onPressed,
+      borderRadius: BorderRadius.circular(20),
+      gradient: ProjectColors.gradient,
+      child: Text(
+        ProjectStrings.pinCodeButton,
+        style: ProjectStyles.boldWhite16Lato,
       ),
     );
   }
