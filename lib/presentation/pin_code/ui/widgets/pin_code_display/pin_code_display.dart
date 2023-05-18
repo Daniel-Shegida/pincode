@@ -16,11 +16,11 @@ class PinCodeDisplay extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         for (int i in numbers)
-          _PinCodeSegment(
+          PinCodeSegment(
             number: i.toString(),
           ),
         for (int i = numbers.length; i < 4; i++)
-          const _PinCodeSegment(
+          const PinCodeSegment(
             number: '',
           ),
       ],
@@ -28,8 +28,8 @@ class PinCodeDisplay extends StatelessWidget {
   }
 }
 
-class _PinCodeSegment extends StatelessWidget {
-  const _PinCodeSegment({required this.number, Key? key}) : super(key: key);
+class PinCodeSegment extends StatelessWidget {
+  const PinCodeSegment({required this.number, Key? key}) : super(key: key);
   final String number;
 
   @override

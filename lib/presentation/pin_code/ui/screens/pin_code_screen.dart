@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_display.dart';
-import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board.dart';
+import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_display/pin_code_display.dart';
+import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board/pin_code_key_board.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
