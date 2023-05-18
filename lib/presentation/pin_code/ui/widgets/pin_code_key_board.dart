@@ -20,32 +20,15 @@ class PinCodeKeyboard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             PinCodeKeyNumber(
-              pincodeNumber: 1,
+              pinCodeNumber: 1,
               onPressed: onNumberPressed,
             ),
             PinCodeKeyNumber(
-              pincodeNumber: 2,
+              pinCodeNumber: 2,
               onPressed: onNumberPressed,
             ),
             PinCodeKeyNumber(
-              pincodeNumber: 3,
-              onPressed: onNumberPressed,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            PinCodeKeyNumber(
-              pincodeNumber: 4,
-              onPressed: onNumberPressed,
-            ),
-            PinCodeKeyNumber(
-              pincodeNumber: 5,
-              onPressed: onNumberPressed,
-            ),
-            PinCodeKeyNumber(
-              pincodeNumber: 6,
+              pinCodeNumber: 3,
               onPressed: onNumberPressed,
             ),
           ],
@@ -54,15 +37,32 @@ class PinCodeKeyboard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             PinCodeKeyNumber(
-              pincodeNumber: 7,
+              pinCodeNumber: 4,
               onPressed: onNumberPressed,
             ),
             PinCodeKeyNumber(
-              pincodeNumber: 8,
+              pinCodeNumber: 5,
               onPressed: onNumberPressed,
             ),
             PinCodeKeyNumber(
-              pincodeNumber: 9,
+              pinCodeNumber: 6,
+              onPressed: onNumberPressed,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            PinCodeKeyNumber(
+              pinCodeNumber: 7,
+              onPressed: onNumberPressed,
+            ),
+            PinCodeKeyNumber(
+              pinCodeNumber: 8,
+              onPressed: onNumberPressed,
+            ),
+            PinCodeKeyNumber(
+              pinCodeNumber: 9,
               onPressed: onNumberPressed,
             ),
           ],
@@ -75,7 +75,7 @@ class PinCodeKeyboard extends StatelessWidget {
               height: 65,
             ),
             PinCodeKeyNumber(
-              pincodeNumber: 0,
+              pinCodeNumber: 0,
               onPressed: onNumberPressed,
             ),
             PinCodeKeyDelete(
