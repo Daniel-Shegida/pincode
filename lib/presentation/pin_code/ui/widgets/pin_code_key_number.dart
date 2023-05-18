@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
 
+/// виджет кнопки с значением клавиатуры
 class PinCodeKeyNumber extends StatelessWidget {
   const PinCodeKeyNumber(
       {required this.pincodeNumber, required this.onPressed, Key? key})

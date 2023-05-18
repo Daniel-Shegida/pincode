@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_delete.dart';
 import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_number.dart';
 
+/// клавиатура набора пинкода
 class PinCodeKeyboard extends StatelessWidget {
   const PinCodeKeyboard({
     required this.onNumberPressed,

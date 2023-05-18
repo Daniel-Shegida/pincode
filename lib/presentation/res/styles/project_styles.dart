@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 
-/// стили проекта
+/// стили проекта (добавлен google_fonts вместо локальных стилей )
 abstract class ProjectStyles {
   static TextStyle boldBlack32Lato = GoogleFonts.lato(
     textStyle: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/styles/project_styles.dart';
 
+/// отображения пинкода проекта
 class PinCodeDisplay extends StatelessWidget {
   const PinCodeDisplay({required this.numbers, required this.amount, Key? key})
       : super(key: key);

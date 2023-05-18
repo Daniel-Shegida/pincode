@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// elavated button проекта с градиэнтом
 class GradientRoundedElevatedButton extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius;
   final double? width;

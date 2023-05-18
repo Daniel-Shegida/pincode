@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/icons/project_icons.dart';
 
+/// виджет иконки удаления с клавиатуры
 class PinCodeKeyDelete extends StatelessWidget {
   const PinCodeKeyDelete({required this.onPressed, Key? key}) : super(key: key);
   final VoidCallback onPressed;

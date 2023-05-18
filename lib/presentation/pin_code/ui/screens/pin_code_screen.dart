@@ -8,9 +8,10 @@ import 'package:untitled/presentation/res/styles/project_styles.dart';
 import 'package:untitled/presentation/ui_kit/basic_transparent_app_bar.dart';
 import 'package:untitled/presentation/ui_kit/gradient_rounded_elevated_button.dart';
 
-/// моковое значение номера, которое должно приходить на экран
+/// моковое значение номера, который должен приходить на экран
 const String _phoneNumber = '+7 (960) 147-67-47';
 
+/// Экран набора пинкода с смс
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({Key? key}) : super(key: key);
 
@@ -20,24 +21,6 @@ class PinCodeScreen extends StatefulWidget {
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
   final List<int> _pinCodeSmsList = [];
-
-  void onNumberPressed(int number) {
-    if (_pinCodeSmsList.length < 4) {
-      _pinCodeSmsList.add(number);
-    }
-    setState(() {
-      _pinCodeSmsList;
-    });
-  }
-
-  void onDeletePressed() {
-    if (_pinCodeSmsList.isNotEmpty) {
-      _pinCodeSmsList.removeLast();
-    }
-    setState(() {
-      _pinCodeSmsList;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +35,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 horizontal: 15.w,
               ),
               child: SingleChildScrollView(
+                // необходимо для добавления spacer
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraint.maxHeight),
                   child: IntrinsicHeight(
@@ -59,9 +43,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 25.h,
-                        ),
                         const _PinCodeTitle(),
                         SizedBox(
                           height: 19.h,
@@ -87,8 +68,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           height: 59.h,
                         ),
                         PinCodeKeyboard(
-                          onNumberPressed: onNumberPressed,
-                          onDeletePressed: onDeletePressed,
+                          onNumberPressed: _onNumberPressed,
+                          onDeletePressed: _onDeletePressed,
                         ),
                       ],
                     ),
@@ -101,8 +82,29 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       ),
     );
   }
+
+  /// обработка нажатия кнопки с значением
+  void _onNumberPressed(int number) {
+    if (_pinCodeSmsList.length < 4) {
+      _pinCodeSmsList.add(number);
+    }
+    setState(() {
+      _pinCodeSmsList;
+    });
+  }
+
+  /// обработка нажатия кнопки удаления
+  void _onDeletePressed() {
+    if (_pinCodeSmsList.isNotEmpty) {
+      _pinCodeSmsList.removeLast();
+    }
+    setState(() {
+      _pinCodeSmsList;
+    });
+  }
 }
 
+/// озаглавие экрана пинкода
 class _PinCodeTitle extends StatelessWidget {
   const _PinCodeTitle({Key? key}) : super(key: key);
 
@@ -115,6 +117,7 @@ class _PinCodeTitle extends StatelessWidget {
   }
 }
 
+/// подзаголовок экрана пинкода
 class _PinCodeSubTitle extends StatelessWidget {
   const _PinCodeSubTitle({required this.phoneNumber, Key? key})
       : super(key: key);
@@ -130,6 +133,7 @@ class _PinCodeSubTitle extends StatelessWidget {
   }
 }
 
+/// кнопка повторно отправляющая смс
 class _PinCodeRepeatButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
