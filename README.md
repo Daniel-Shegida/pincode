@@ -1,16 +1,19 @@
-# untitled
+# оформленный проект с собеседования 
 
-A new Flutter project.
+основная логика проекта осталась прежней
 
-## Getting Started
+## Основные изменения
++ была увеличена адаптивность верстки путем добавления screenUtils и небольшого рефактора тела скафолда 
++ были добавлены шрифты через googleFonts
++ были добавлены комментарии
++ виджеты выделены в раздельные файлы
 
-This project is a starting point for a Flutter application.
+## Результат работы 
 
-A few resources to get you started if this is your first Flutter project:
+pixel6 1080x2400
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![71](https://github.com/Daniel-Shegida/pincode/assets/47796424/f42d56bc-06c3-451a-9e07-dc287e720ae1)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2.7  QVGA  240x320
+
+![72](https://github.com/Daniel-Shegida/pincode/assets/47796424/e2964891-38f7-47f3-b16e-1d178ac96872)
