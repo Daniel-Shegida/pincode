@@ -17,6 +17,7 @@ class PinCodeKeyDelete extends StatelessWidget {
         padding: EdgeInsets.all(10.h),
         child: SvgPicture.asset(
           ProjectIcons.iDelete,
+          // ignore: deprecated_member_use
           color: ProjectColors.purple,
         ),
       ),
