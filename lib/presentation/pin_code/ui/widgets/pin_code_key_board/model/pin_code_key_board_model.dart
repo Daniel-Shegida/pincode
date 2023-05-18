@@ -1,5 +1,8 @@
 import 'dart:async';
 
+/// модель логики виджета [PinCodeKeyBoar]
+/// основная идея осталась прежней, есть проверка на переполнение и есть
+/// события добавления или удаления пинкодов
 class PinCodeKeyBoardModel {
   final int pinCodeAmount;
   final List<int> _pinCodeSmsList = [];
@@ -15,7 +18,7 @@ class PinCodeKeyBoardModel {
 
   /// обработка попытки добавления нового значения пинкода
   void addPinCodeNumber(int number) {
-    if (_pinCodeSmsList.length < 4) {
+    if (_pinCodeSmsList.length < pinCodeAmount) {
       _pinCodeSmsList.add(number);
       _streamController.add(_pinCodeSmsList);
     }
