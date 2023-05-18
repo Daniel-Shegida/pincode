@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_display/pin_code_display.dart';
+import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board/model/pin_code_key_board_model.dart';
 import 'package:untitled/presentation/pin_code/ui/widgets/pin_code_key_board/pin_code_key_board.dart';
 import 'package:untitled/presentation/res/colors/project_colors.dart';
 import 'package:untitled/presentation/res/strings/project_strings.dart';
@@ -20,7 +21,8 @@ class PinCodeScreen extends StatefulWidget {
 }
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
-  final List<int> _pinCodeSmsList = [];
+  final PinCodeKeyBoardModel pinCodeKeyBoardModel =
+      PinCodeKeyBoardModel(pinCodeAmount: 4);
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +55,15 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         SizedBox(
                           height: 20.h,
                         ),
-                        PinCodeDisplay(
-                          numbers: _pinCodeSmsList,
-                          amount: 4,
+                        StreamBuilder<List<int>>(
+                          initialData: const [],
+                          stream: pinCodeKeyBoardModel.pinCodeUpdates,
+                          builder: (context, snapShot) {
+                            return PinCodeDisplay(
+                              numbers: snapShot.data!,
+                              amount: pinCodeKeyBoardModel.pinCodeAmount,
+                            );
+                          },
                         ),
                         SizedBox(
                           height: 110.h,
@@ -68,8 +76,10 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           height: 59.h,
                         ),
                         PinCodeKeyboard(
-                          onNumberPressed: _onNumberPressed,
-                          onDeletePressed: _onDeletePressed,
+                          onNumberPressed:
+                              pinCodeKeyBoardModel.addPinCodeNumber,
+                          onDeletePressed:
+                              pinCodeKeyBoardModel.deletePinCodeNumber,
                         ),
                       ],
                     ),
@@ -81,26 +91,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         ),
       ),
     );
-  }
-
-  /// обработка нажатия кнопки с значением
-  void _onNumberPressed(int number) {
-    if (_pinCodeSmsList.length < 4) {
-      _pinCodeSmsList.add(number);
-    }
-    setState(() {
-      _pinCodeSmsList;
-    });
-  }
-
-  /// обработка нажатия кнопки удаления
-  void _onDeletePressed() {
-    if (_pinCodeSmsList.isNotEmpty) {
-      _pinCodeSmsList.removeLast();
-    }
-    setState(() {
-      _pinCodeSmsList;
-    });
   }
 }
 
